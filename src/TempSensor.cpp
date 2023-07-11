@@ -6,7 +6,6 @@ Temp::Temp(int pin) {
 }
 
 void Temp::begin(){
-    OneWire ourWire(_pin);
     sensor.begin();
 }
 
