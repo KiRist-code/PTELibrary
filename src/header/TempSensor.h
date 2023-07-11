@@ -9,12 +9,9 @@ class Temp{
         Temp(int pin);
         void setup();
         //personal set-up
-        void Temp_read();
-        void averageAnalogRead();
-        
+        int temp_read();
     private:
         int _pin;
-        int buf[10];
 }
 
 #endif
