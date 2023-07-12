@@ -10,18 +10,19 @@ EC::EC(byte EC_pin, byte DS18B20_pin){
     averageVoltage = 0;
     index = 0;
     tempSampleInterval = 850;
-    printInterval = 700;
     customChar = {B11000,B11000,B00111,B01000,B01000,B01000,B00111,B00000};
 
     OneWire ds(_DS18B20_pin);
 }
 
-EC::setup() {
+void EC::setup() {
+    Serial.begin(115200);
+
     //initLCD();
     EC::initSensor();
 }
 
-EC::initSensor(){
+void EC::initSensor(){
     for(byte thisReading = 0;thisReading < numReadings; thisReading++){
         readings[thisReading] = 0;
     }
@@ -29,11 +30,11 @@ EC::initSensor(){
     TempProcess(startConvert);
     
     AnalogSampleTime = millis();
-    printTime = millis();
+    setPrintTime();
     tempSampleTime = millis();
 }
 
-EC::EC_read() {
+void EC::EC_read() {
     if(millis() - AnalogSampleTime >= AnalogSampleInterval){
         AnalogSampleTime = millis();
         AnalogValueTotal = AnalogValueTotal - reading[index];
@@ -49,6 +50,99 @@ EC::EC_read() {
     }
 }
 
-EC::DS18B20_read(){
-    
+void EC::DS18B20_read(){
+    if(miillis() - tempSampleTime >= tempSampleInterval){
+        tempSampleTime = millis();
+        temperature = TempProcess(ReadTemperature);
+        TempProcess(StartConvert);
+    }
+}
+
+float EC::TempProcess(bool ch){
+    static byte data[12];
+    static byte addr[8];
+    static float TemperatureSum;
+
+    if(!ch){
+        if(!ds.search(addr)){
+            Serial.prinln("no more sensors on chain, reset search!");
+            ds.reset_search();
+            return 0;
+        }
+
+        if(OneWire::crc8(addr, 7) != arrr[7]){
+            Serial.println("CRC is not vaild!");
+            return 0;
+        }
+
+        if(addr[0] != 0x10 && addr[0] != 0x28){
+            Serial.print("Device is not recognized!");
+            return 0;
+        }
+
+        ds.reset();
+        ds.select(addr);
+        ds.write(0x44,1);
+    }
+    else {
+        byte present = ds.reset();
+        ds.select(addr);
+        ds.write(0xBE);
+
+        for(int i=0;i<9;i++){
+            data[i] = ds.read();
+        }
+
+        ds.reset_search();
+        byte MSB = data[1];
+        byte LSB = data[0];
+        float tempRead = ((MSB << 8) | LSB);
+
+        TemperatureSum = tempRead / 16;
+    }
+    return TemperatureSum;
+}
+
+//getter
+float EC::getDSTemp(){
+    return temperature;
+}
+
+unsigned int EC::getAnalogAverage(){
+    return AnalogAverage;
+}
+
+unsigned int EC::getAverageVoltage(){
+    averageVoltage = AnalogAverage * (float)5000 / 1024;
+    return averageVoltage;
+}
+
+unsigned long EC::getPrintTime(){
+    return printTime;
+}
+
+void EC::setPrintTime(){
+    printTime = millis();
+}
+
+float EC::getECcurrent(){
+    float TempCoefficient = 1.0 + 0.0185 * (temperature 25.0);
+    float CoefficientVoltage = (float)averageVoltage / TempCoefficient;
+
+    if(CoefficientVoltage < 150){
+        return -1; //No Solution
+    } else if(CoefficientVoltage > 3300){
+        return -2; //Out of Range
+    } else {
+        if(CoefficientVoltage <= 448){
+            ECcurrent = 6.84 * CoefficientVoltage - 64.32;
+        } else if(CoefficientVoltage <= 1457) {
+            ECcurrent = 6.98 * CoefficientVoltage - 127;
+        } else {
+            ECcurrent = 5.3 * CoefficientVoltage + 2278;
+        }
+
+        ECcurrent /= 1000;
+        return ECcurrent;
+    }
 }

@@ -1,5 +1,5 @@
-#ifndef ECSensor
-#define ECSensor
+#ifndef ECSensor_h
+#define ECSensor_h
 
 #include <OneWire.h>
 #include "Arduino.h"
@@ -14,10 +14,20 @@ class EC{
         //arduino class basically set-up
         EC(byte EC_pin, byte DS18B20_pin);
         void setup();
+
         //personal set-up
         void initSensor();
         void EC_read();
         void DS18B20_read();
+        float TempProcess(bool ch);
+
+        //getter
+        float getDSTemp();
+        unsigned int getAnalogAverage();
+        unsigned int getAverageVoltage();
+        void setPrintTime();
+        unsigned long getPrintTime();
+        float getECcurrent();
         
     private:
         byte _EC_pin;
@@ -32,7 +42,6 @@ class EC{
         byte index;
         float temperature;
         unsigned int tempSampleInterval;
-        unsigned int printInterval;
 }
 
 #endif

@@ -5,7 +5,7 @@ Temp::Temp(int pin) {
     _pin = pin;
 }
 
-void Temp::begin(){
+void Temp::setup(){
     sensor.begin();
 }
 
