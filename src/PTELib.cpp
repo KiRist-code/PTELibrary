@@ -30,6 +30,9 @@ void PTELib::sensor_read(){
     //read PH sensor
     ph.PH_read();
 
+    /*Serial Display*/
+
+    //EC
     unsigned int analogAverage = ec.getAnalogAverage();
     if(millis() - printTime >= printInterval){
         ec.setPrintTime();
@@ -55,7 +58,17 @@ void PTELib::sensor_read(){
                 Serial.print("ms/cm");
                 break;
         }
-
-        
     }
+
+    //PH
+    float pHValue = ph.getPHValue();
+    float pHVol = ph.getPHVol();
+    Serial.print("Vol: ");
+    Serial.println(pHValue);
+    Serial.print("ph: ");
+    Serial.println(pHVol);
+
+    //temperature
+    Serial.print("Temperature: ");
+    Serial.println(temperature);
 }

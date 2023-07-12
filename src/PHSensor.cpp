@@ -41,3 +41,11 @@ void PH::averageAnalogRead(){
         avgValue += buf[i];
     }
 }
+
+float PH::getPHValue(){
+    return pHValue;
+}
+
+float PH::getPHVol(){
+    return pHVol;
+}

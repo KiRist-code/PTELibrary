@@ -11,6 +11,8 @@ class PH{
         //personal set-up
         void PH_read();
         void averageAnalogRead();
+        float getPHValue();
+        float getPHVol();
         
     private:
         int _pin;
