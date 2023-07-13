@@ -21,7 +21,6 @@ class PTELib{
         byte _DS18D20Pin;
         unsigned long printTime;
         unsigned int printInterval;
-}
-
+};
 
 #endif
