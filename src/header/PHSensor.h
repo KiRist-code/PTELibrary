@@ -21,6 +21,6 @@ class PH{
         float pHVol;
         int buf[10];
         int temp;
-}
+};
 
 #endif

@@ -16,6 +16,6 @@ class Temp{
         int _pin;
         OneWire ourWire(_pin);
         DallasTemperature sensors(&ourWire);
-}
+};
 
 #endif

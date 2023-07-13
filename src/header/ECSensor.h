@@ -42,6 +42,6 @@ class EC{
         byte index;
         float temperature;
         unsigned int tempSampleInterval;
-}
+};
 
 #endif
