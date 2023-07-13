@@ -173,56 +173,74 @@ c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:73:38: note: sugge
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:83:9: error: 'ds' was not declared in this scope
          ds.reset();
          ^~
-
+[FIX]
 
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:88:24: error: 'ds' was not declared in this scope
          byte present = ds.reset();
                         ^~
-
+[FIX]
 
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp: In member function 'float EC::getECcurrent()':
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:129:57: error: expected ')' before numeric constant
      float TempCoefficient = 1.0 + 0.0185 * (temperature 25.0);
                                                          ^~~~
+[FIX]
+
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp: In constructor 'PTELib::PTELib(int, int, byte, byte)':
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:4:67: error: no matching function for call to 'EC::EC()'
  PTELib::PTELib(int phPin, int tempPin, byte ecPin, byte DS18D20Pin){
                                                                    ^
+
+
 In file included from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.h:5:0,
                  from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:2:
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:15:9: note: candidate: EC::EC(byte, byte)
          EC(byte EC_pin, byte DS18B20_pin);
          ^~
+
+
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:15:9: note:   candidate expects 2 arguments, 0 provided
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:12:7: note: candidate: constexpr EC::EC(const EC&)
  class EC{
        ^~
+
+
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:12:7: note:   candidate expects 1 argument, 0 provided
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:12:7: note: candidate: constexpr EC::EC(EC&&)
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:12:7: note:   candidate expects 1 argument, 0 provided
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:4:67: error: no matching function for call to 'PH::PH()'
  PTELib::PTELib(int phPin, int tempPin, byte ecPin, byte DS18D20Pin){
                                                                    ^
+
+
 In file included from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.h:6:0,
                  from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:2:
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:9:9: note: candidate: PH::PH(int)
          PH(int pin);
          ^~
+
+
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:9:9: note:   candidate expects 1 argument, 0 provided
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:6:7: note: candidate: constexpr PH::PH(const PH&)
  class PH{
        ^~
+
+
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:6:7: note:   candidate expects 1 argument, 0 provided
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:6:7: note: candidate: constexpr PH::PH(PH&&)
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:6:7: note:   candidate expects 1 argument, 0 provided
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:4:67: error: no matching function for call to 'Temp::Temp()'
  PTELib::PTELib(int phPin, int tempPin, byte ecPin, byte DS18D20Pin){
                                                                    ^
+
+
 In file included from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.h:7:0,
                  from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:2:
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.h:11:9: note: candidate: Temp::Temp(int)
          Temp(int pin);
          ^~~~
+
+
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.h:11:9: note:   candidate expects 1 argument, 0 provided
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.h:8:7: note: candidate: constexpr Temp::Temp(const Temp&)
  class Temp{
@@ -234,6 +252,8 @@ c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp: In member function 
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:21:5: error: 'Seiral' was not declared in this scope
      Seiral.begin(serial_port);
      ^~~~~~
+
+
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:21:5: note: suggested alternative: 'Serial'
      Seiral.begin(serial_port);
      ^~~~~~
@@ -242,13 +262,18 @@ c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp: In member function 
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:27:5: error: 'ecDS18B20_read' was not declared in this scope
      ecDS18B20_read();
      ^~~~~~~~~~~~~~
+[FIX]
+
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:27:5: note: suggested alternative: 'DS18B20MODEL'
      ecDS18B20_read();
      ^~~~~~~~~~~~~~
+[FIX]
+
      DS18B20MODEL
 c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:49:25: error: switch quantity not an integer
          switch(currentEC){
                          ^
+[FIX]
 
 exit status 1
 

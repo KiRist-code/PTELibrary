@@ -8,9 +8,9 @@ PTELib::PTELib(int phPin, int tempPin, byte ecPin, byte DS18D20Pin){
     _DS18D20Pin = DS18D20Pin;
     printInterval = 700;
 
-    EC ec = EC(_ecPin, _DS18D20Pin);
-    Temp temp = Temp(_tempPin);
-    PH ph = PH(_phPin);
+    ec = EC(_ecPin, _DS18D20Pin);
+    temp = Temp(_tempPin);
+    ph = PH(_phPin);
 }
 
 void PTELib::setup(int serial_port){
@@ -24,7 +24,7 @@ void PTELib::setup(int serial_port){
 void PTELib::sensor_read(){
     //read EC sensor
     ec.EC_read();
-    ecDS18B20_read();
+    ec.DS18B20_read();
     //read temperature sensor
     int temperature = temp.temp_read();
     //read PH sensor
@@ -46,7 +46,7 @@ void PTELib::sensor_read(){
         Serial.print("mv    EC: ");
         
         float currentEC = ec.getECcurrent();
-        switch(currentEC){
+        switch((int)currentEC){
             case -1:
                 Serial.print("No Solution");
                 break;

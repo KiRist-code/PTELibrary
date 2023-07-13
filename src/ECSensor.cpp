@@ -126,7 +126,7 @@ void EC::setPrintTime(){
 }
 
 float EC::getECcurrent(){
-    float TempCoefficient = 1.0 + 0.0185 * (temperature 25.0);
+    float TempCoefficient = 1.0 + 0.0185 * (temperature - 25.0);
     float CoefficientVoltage = (float)averageVoltage / TempCoefficient;
 
     if(CoefficientVoltage < 150){
