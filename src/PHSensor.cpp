@@ -27,11 +27,11 @@ void PH::averageAnalogRead(){
 
     for(int i=0;i<9;i++){
         for(int j=i+1;j<10;j++){
-            if(buf[i]>buf[j]{
+            if(buf[i]>buf[j]){
                 temp = buf[i];
                 buf[i] = buf[j];
                 buf[j] = temp;
-            })
+            }
         }
     }
 

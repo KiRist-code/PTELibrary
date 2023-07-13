@@ -3,19 +3,19 @@
 
 EC::EC(byte EC_pin, byte DS18B20_pin){
     _EC_pin = EC_pin;
-    _DS18B20_pin = DS18B20_pin;
+    _DS18D20_pin = DS18B20_pin;
     AnalogSampleInterval = 25;
     AnalogValueTotal = 0;
     AnalogAverage = 0;
     averageVoltage = 0;
     index = 0;
     tempSampleInterval = 850;
-    customChar = {B11000,B11000,B00111,B01000,B01000,B01000,B00111,B00000};
+    customChar[] = {B11000,B11000,B00111,B01000,B01000,B01000,B00111,B00000};
 
-    OneWire ds(_DS18B20_pin);
+    ds = OneWire(_DS18B20_pin);
 }
 
-void EC::setup() {
+void EC::begin() {
     Serial.begin(115200);
 
     //initLCD();
@@ -27,7 +27,7 @@ void EC::initSensor(){
         readings[thisReading] = 0;
     }
 
-    TempProcess(startConvert);
+    TempProcess(StartConvert);
     
     AnalogSampleTime = millis();
     setPrintTime();
@@ -37,8 +37,8 @@ void EC::initSensor(){
 void EC::EC_read() {
     if(millis() - AnalogSampleTime >= AnalogSampleInterval){
         AnalogSampleTime = millis();
-        AnalogValueTotal = AnalogValueTotal - reading[index];
-        readings[index] = analogRead(_EC_Pin);
+        AnalogValueTotal = AnalogValueTotal - readings[index];
+        readings[index] = analogRead(_EC_pin);
         AnalogValueTotal = AnalogValueTotal + readings[index];
         index = index + 1;
 
@@ -51,7 +51,7 @@ void EC::EC_read() {
 }
 
 void EC::DS18B20_read(){
-    if(miillis() - tempSampleTime >= tempSampleInterval){
+    if(millis() - tempSampleTime >= tempSampleInterval){
         tempSampleTime = millis();
         temperature = TempProcess(ReadTemperature);
         TempProcess(StartConvert);
@@ -65,12 +65,12 @@ float EC::TempProcess(bool ch){
 
     if(!ch){
         if(!ds.search(addr)){
-            Serial.prinln("no more sensors on chain, reset search!");
+            Serial.println("no more sensors on chain, reset search!");
             ds.reset_search();
             return 0;
         }
 
-        if(OneWire::crc8(addr, 7) != arrr[7]){
+        if(OneWire::crc8(addr, 7) != addr[7]){
             Serial.println("CRC is not vaild!");
             return 0;
         }

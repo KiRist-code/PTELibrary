@@ -3,8 +3,8 @@
 
 Temp::Temp(int pin) {
     _pin = pin;
-    ow = ourWire(_pin);
-    t_Sensor = sensors(&ourWire);
+    ow = OneWire(_pin);
+    t_Sensor = DallasTemperature(&ourWire);
 }
 
 void Temp::setup(){
@@ -12,7 +12,7 @@ void Temp::setup(){
 }
 
 int Temp::temp_read(){
-    t_Sensors.reqeustTemperatures();
-    return sensors.getTempCByIndex(0);
+    t_Sensor.reqeustTemperatures();
+    return t_Sensor.getTempCByIndex(0);
     //displayLCD();
 }

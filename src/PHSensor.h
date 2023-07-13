@@ -7,7 +7,7 @@ class PH{
     public:
         //arduino class basically set-up
         PH(int pin);
-        void setup();
+        void begin();
         //personal set-up
         void PH_read();
         void averageAnalogRead();
@@ -21,6 +21,7 @@ class PH{
         float pHVol;
         int buf[10];
         int temp;
+        unsigned long int avgValue;
 };
 
 #endif

@@ -1,0 +1,255 @@
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.cpp:9:16: error: no 'void PH::begin()' member function declared in class 'PH'
+ void PH::begin(){
+                ^
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.cpp: In member function 'void PH::PH_read()':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.cpp:16:21: error: 'avgValue' was not declared in this scope
+     pHVol = ((float)avgValue * 5.0 / 1024 / 6) - 0.08;
+                     ^~~~~~~~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.cpp:16:21: note: suggested alternative: 'pHValue'
+     pHVol = ((float)avgValue * 5.0 / 1024 / 6) - 0.08;
+                     ^~~~~~~~
+                     pHValue
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.cpp: In member function 'void PH::averageAnalogRead()':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.cpp:30:29: error: expected ')' before '{' token
+             if(buf[i]>buf[j]{
+                             ^
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.cpp:35:9: error: expected primary-expression before '}' token
+         }
+         ^
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.cpp:38:5: error: 'avgValue' was not declared in this scope
+     avgValue = 0;
+     ^~~~~~~~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.cpp:38:5: note: suggested alternative: 'pHValue'
+     avgValue = 0;
+     ^~~~~~~~
+     pHValue
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.cpp: In constructor 'Temp::Temp(int)':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.cpp:6:10: error: 'ourWire' was not declared in this scope
+     ow = ourWire(_pin);
+          ^~~~~~~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.cpp:6:10: note: suggested alternative: 'OneWire'
+     ow = ourWire(_pin);
+          ^~~~~~~
+          OneWire
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.cpp:7:16: error: 'sensors' was not declared in this scope
+     t_Sensor = sensors(&ourWire);
+                ^~~~~~~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.cpp:7:16: note: suggested alternative: 't_Sensor'
+     t_Sensor = sensors(&ourWire);
+                ^~~~~~~
+                t_Sensor
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.cpp: In member function 'int Temp::temp_read()':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.cpp:15:5: error: 't_Sensors' was not declared in this scope
+     t_Sensors.reqeustTemperatures();
+     ^~~~~~~~~
+[MAYBE FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.cpp:15:5: note: suggested alternative: 't_Sensor'
+     t_Sensors.reqeustTemperatures();
+     ^~~~~~~~~
+     t_Sensor
+[MAYBE FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.cpp:16:12: error: 'sensors' was not declared in this scope
+     return sensors.getTempCByIndex(0);
+            ^~~~~~~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.cpp:16:12: note: suggested alternative: 't_Sensor'
+     return sensors.getTempCByIndex(0);
+            ^~~~~~~
+            t_Sensor
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp: In constructor 'EC::EC(byte, byte)':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:6:5: error: '_DS18B20_pin' was not declared in this scope
+     _DS18B20_pin = DS18B20_pin;
+     ^~~~~~~~~~~~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:6:5: note: suggested alternative: '_DS18D20_pin'
+     _DS18B20_pin = DS18B20_pin;
+     ^~~~~~~~~~~~
+     _DS18D20_pin
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:13:74: error: assigning to an array from an initializer list
+     customChar = {B11000,B11000,B00111,B01000,B01000,B01000,B00111,B00000};
+                                                                          ^
+[MAYBE FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp: In member function 'void EC::initSensor()':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:30:17: error: 'startConvert' was not declared in this scope
+     TempProcess(startConvert);
+                 ^~~~~~~~~~~~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:30:17: note: suggested alternative: 'StartConvert'
+     TempProcess(startConvert);
+                 ^~~~~~~~~~~~
+                 StartConvert
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp: In member function 'void EC::EC_read()':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:40:47: error: 'reading' was not declared in this scope
+         AnalogValueTotal = AnalogValueTotal - reading[index];
+                                               ^~~~~~~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:40:47: note: suggested alternative: 'readings'
+         AnalogValueTotal = AnalogValueTotal - reading[index];
+                                               ^~~~~~~
+                                               readings
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:41:38: error: '_EC_Pin' was not declared in this scope
+         readings[index] = analogRead(_EC_Pin);
+                                      ^~~~~~~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:41:38: note: suggested alternative: '_EC_pin'
+         readings[index] = analogRead(_EC_Pin);
+                                      ^~~~~~~
+                                      _EC_pin
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp: In member function 'void EC::DS18B20_read()':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:54:8: error: 'miillis' was not declared in this scope
+     if(miillis() - tempSampleTime >= tempSampleInterval){
+        ^~~~~~~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:54:8: note: suggested alternative: 'millis'
+     if(miillis() - tempSampleTime >= tempSampleInterval){
+        ^~~~~~~
+        millis
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp: In member function 'float EC::TempProcess(bool)':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:67:13: error: 'ds' was not declared in this scope
+         if(!ds.search(addr)){
+             ^~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:68:20: error: 'class HardwareSerial' has no member named 'prinln'; did you mean 'println'?
+             Serial.prinln("no more sensors on chain, reset search!");
+                    ^~~~~~
+                    println
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:73:38: error: 'arrr' was not declared in this scope
+         if(OneWire::crc8(addr, 7) != arrr[7]){
+                                      ^~~~
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:73:38: note: suggested alternative: 'addr'
+         if(OneWire::crc8(addr, 7) != arrr[7]){
+                                      ^~~~
+                                      addr
+[FIX]
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:83:9: error: 'ds' was not declared in this scope
+         ds.reset();
+         ^~
+
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:88:24: error: 'ds' was not declared in this scope
+         byte present = ds.reset();
+                        ^~
+
+
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp: In member function 'float EC::getECcurrent()':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.cpp:129:57: error: expected ')' before numeric constant
+     float TempCoefficient = 1.0 + 0.0185 * (temperature 25.0);
+                                                         ^~~~
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp: In constructor 'PTELib::PTELib(int, int, byte, byte)':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:4:67: error: no matching function for call to 'EC::EC()'
+ PTELib::PTELib(int phPin, int tempPin, byte ecPin, byte DS18D20Pin){
+                                                                   ^
+In file included from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.h:5:0,
+                 from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:2:
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:15:9: note: candidate: EC::EC(byte, byte)
+         EC(byte EC_pin, byte DS18B20_pin);
+         ^~
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:15:9: note:   candidate expects 2 arguments, 0 provided
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:12:7: note: candidate: constexpr EC::EC(const EC&)
+ class EC{
+       ^~
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:12:7: note:   candidate expects 1 argument, 0 provided
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:12:7: note: candidate: constexpr EC::EC(EC&&)
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\ECSensor.h:12:7: note:   candidate expects 1 argument, 0 provided
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:4:67: error: no matching function for call to 'PH::PH()'
+ PTELib::PTELib(int phPin, int tempPin, byte ecPin, byte DS18D20Pin){
+                                                                   ^
+In file included from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.h:6:0,
+                 from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:2:
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:9:9: note: candidate: PH::PH(int)
+         PH(int pin);
+         ^~
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:9:9: note:   candidate expects 1 argument, 0 provided
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:6:7: note: candidate: constexpr PH::PH(const PH&)
+ class PH{
+       ^~
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:6:7: note:   candidate expects 1 argument, 0 provided
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:6:7: note: candidate: constexpr PH::PH(PH&&)
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PHSensor.h:6:7: note:   candidate expects 1 argument, 0 provided
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:4:67: error: no matching function for call to 'Temp::Temp()'
+ PTELib::PTELib(int phPin, int tempPin, byte ecPin, byte DS18D20Pin){
+                                                                   ^
+In file included from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.h:7:0,
+                 from c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:2:
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.h:11:9: note: candidate: Temp::Temp(int)
+         Temp(int pin);
+         ^~~~
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.h:11:9: note:   candidate expects 1 argument, 0 provided
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.h:8:7: note: candidate: constexpr Temp::Temp(const Temp&)
+ class Temp{
+       ^~~~
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.h:8:7: note:   candidate expects 1 argument, 0 provided
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.h:8:7: note: candidate: constexpr Temp::Temp(Temp&&)
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\TempSensor.h:8:7: note:   candidate expects 1 argument, 0 provided
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp: In member function 'void PTELib::setup(int)':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:21:5: error: 'Seiral' was not declared in this scope
+     Seiral.begin(serial_port);
+     ^~~~~~
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:21:5: note: suggested alternative: 'Serial'
+     Seiral.begin(serial_port);
+     ^~~~~~
+     Serial
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp: In member function 'void PTELib::sensor_read()':
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:27:5: error: 'ecDS18B20_read' was not declared in this scope
+     ecDS18B20_read();
+     ^~~~~~~~~~~~~~
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:27:5: note: suggested alternative: 'DS18B20MODEL'
+     ecDS18B20_read();
+     ^~~~~~~~~~~~~~
+     DS18B20MODEL
+c:\Users\Jeju\Documents\Arduino\libraries\PTELib\PTELib.cpp:49:25: error: switch quantity not an integer
+         switch(currentEC){
+                         ^
+
+exit status 1
+
+Compilation error: exit status 1

@@ -13,7 +13,7 @@ class EC{
     public:
         //arduino class basically set-up
         EC(byte EC_pin, byte DS18B20_pin);
-        void setup();
+        void begin();
 
         //personal set-up
         void initSensor();
@@ -42,6 +42,7 @@ class EC{
         byte index;
         float temperature;
         unsigned int tempSampleInterval;
+        OneWire ds;
 };
 
 #endif
