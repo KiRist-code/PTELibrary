@@ -14,8 +14,8 @@ class Temp{
         int temp_read();
     private:
         int _pin;
-        OneWire ourWire(_pin);
-        DallasTemperature sensors(&ourWire);
+        OneWire ow;
+        DallasTemperature t_Sensor;
 };
 
 #endif
