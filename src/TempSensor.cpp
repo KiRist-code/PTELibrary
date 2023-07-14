@@ -1,7 +1,7 @@
 #include"TempSensor.h"
 #include"Arduino.h"
 
-Temp::Temp(int pin) {
+Temp::Temp(uint8_t pin) {
     _pin = pin;
     ow = OneWire(_pin);
     t_Sensor = DallasTemperature(&ow);

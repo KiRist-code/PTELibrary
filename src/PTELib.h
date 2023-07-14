@@ -5,20 +5,21 @@
 #include"ECSensor.h"
 #include"PHSensor.h"
 #include"TempSensor.h"
+#include <stdint.h>
 
 class PTELib{
     public:
-        PTELib(int phPin, int tempPin, byte ecPin, byte DS18D20Pin);
+        PTELib(uint8_t phPin, uint8_t tempPin, uint8_t ecPin, uint8_t DS18D20Pin);
         void setup(int serial_port);
         void sensor_read();
     private:
         EC ec;
         PH ph;
         Temp temp;
-        int _phPin;
-        int _tempPin;
-        byte _ecPin;
-        byte _DS18D20Pin;
+        uint8_t _phPin;
+        uint8_t _tempPin;
+        uint8_t _ecPin;
+        uint8_t _DS18D20Pin;
         unsigned long printTime;
         unsigned int printInterval;
 };

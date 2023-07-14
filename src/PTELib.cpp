@@ -1,7 +1,8 @@
 #include"Arduino.h"
 #include"PTELib.h"
 
-PTELib::PTELib(int phPin, int tempPin, byte ecPin, byte DS18D20Pin){
+
+PTELib::PTELib(uint8_t phPin, uint8_t tempPin, uint8_t ecPin, uint8_t DS18D20Pin){
     _phPin = phPin;
     _tempPin = tempPin;
     _ecPin = ecPin;

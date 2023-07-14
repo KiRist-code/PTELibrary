@@ -6,7 +6,7 @@
 class PH{
     public:
         //arduino class basically set-up
-        PH(int pin);
+        PH(uint8_t pin);
         void begin();
         //personal set-up
         void PH_read();

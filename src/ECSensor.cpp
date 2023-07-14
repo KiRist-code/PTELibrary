@@ -1,7 +1,7 @@
 #include"ECSensor.h"
 #include"Arduino.h"
 
-EC::EC(byte EC_pin, byte DS18B20_pin){
+EC::EC(uint8_t EC_pin, uint8_t DS18B20_pin){
     _EC_pin = EC_pin;
     _DS18D20_pin = DS18B20_pin;
     AnalogSampleInterval = 25;

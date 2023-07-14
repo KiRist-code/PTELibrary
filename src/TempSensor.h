@@ -4,11 +4,12 @@
 #include "Arduino.h"
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#include <stdint.h>
 
 class Temp{
     public:
         //arduino class basically set-up
-        Temp(int pin);
+        Temp(uint8_t pin);
         void begin();
         //personal set-up
         int temp_read();
