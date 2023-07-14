@@ -10,9 +10,14 @@ EC::EC(byte EC_pin, byte DS18B20_pin){
     averageVoltage = 0;
     index = 0;
     tempSampleInterval = 850;
-    customChar[] = {B11000,B11000,B00111,B01000,B01000,B01000,B00111,B00000};
 
-    ds = OneWire(_DS18B20_pin);
+    byte inputCustomChar[] = {B11000,B11000,B00111,B01000,B01000,B01000,B00111,B00000};
+
+    for(int i=0;i<8;i++){
+        customChar[i] = inputCustomChar[i];
+    }
+
+    ds = OneWire(_DS18D20_pin);
 }
 
 void EC::begin() {

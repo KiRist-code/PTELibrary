@@ -9,7 +9,7 @@ class Temp{
     public:
         //arduino class basically set-up
         Temp(int pin);
-        void setup();
+        void begin();
         //personal set-up
         int temp_read();
     private:

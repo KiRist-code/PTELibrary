@@ -14,11 +14,11 @@ PTELib::PTELib(int phPin, int tempPin, byte ecPin, byte DS18D20Pin){
 }
 
 void PTELib::setup(int serial_port){
-    ec.setup();
+    ec.begin();
     printTime = ec.getPrintTime();
-    temp.setup();
+    temp.begin();
 
-    Seiral.begin(serial_port);
+    Serial.begin(serial_port);
 }
 
 void PTELib::sensor_read(){

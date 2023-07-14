@@ -4,10 +4,10 @@
 Temp::Temp(int pin) {
     _pin = pin;
     ow = OneWire(_pin);
-    t_Sensor = DallasTemperature(&ourWire);
+    t_Sensor = DallasTemperature(&ow);
 }
 
-void Temp::setup(){
+void Temp::begin(){
     t_Sensor.begin();
 }
 
