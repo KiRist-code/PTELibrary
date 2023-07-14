@@ -12,7 +12,7 @@ void Temp::begin(){
 }
 
 int Temp::temp_read(){
-    t_Sensor.reqeustTemperatures();
+    t_Sensor.requestTemperatures();
     return t_Sensor.getTempCByIndex(0);
     //displayLCD();
 }
