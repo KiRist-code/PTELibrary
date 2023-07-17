@@ -2,10 +2,10 @@
 
 PTELib PTELib(A1, 10, A2, 10);
 
-void setup()
-{
+void setup(){
+  PTELib.begin(9600);
 }
 
-void loop()
-{
+void loop(){
+  PTELib.sensor_read();
 }
