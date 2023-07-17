@@ -9,16 +9,16 @@ PTELib::PTELib(uint8_t phPin, uint8_t tempPin, uint8_t ecPin, uint8_t DS18D20Pin
     this->_DS18D20Pin = DS18D20Pin;
     this->printInterval = 700;
 
-    this->ec = EC(_ecPin, _DS18D20Pin);
-    this->temp = Temp(_tempPin);
+    this->ec = EC(_ecPin, _DS18D20Pin); // pinMode 세팅 완료
+    this->temp = Temp(_tempPin);        // pinMode 세팅 완료
     this->ph = PH(_phPin);
 }
 
-void PTELib::setup(int serial_port)
+void PTELib::begin(int serial_port)
 {
-    ec.begin();
+    // ec.begin();
     printTime = ec.getPrintTime();
-    temp.begin();
+    // temp.begin();
 
     Serial.begin(serial_port);
 }

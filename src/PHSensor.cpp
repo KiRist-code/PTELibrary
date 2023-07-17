@@ -1,14 +1,10 @@
 #include "PHSensor.h"
 #include "Arduino.h"
 
-PH::PH(uint8_t pin)
+void PH::begin(uint8_t pin)
 {
     this->_pin = pin;
     this->calibration = (6.42 - (-14.50));
-}
-
-void PH::begin()
-{
 }
 
 void PH::PH_read()
