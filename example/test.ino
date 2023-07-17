@@ -2,10 +2,10 @@
 
 PTELib PTELib(A1, 10, A2, 10);
 
-void setup(){
-
+void setup()
+{
 }
 
-void loop(){
-
+void loop()
+{
 }

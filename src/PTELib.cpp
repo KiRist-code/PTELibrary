@@ -3,15 +3,15 @@
 
 PTELib::PTELib(uint8_t phPin, uint8_t tempPin, uint8_t ecPin, uint8_t DS18D20Pin)
 {
-    _phPin = phPin;
-    _tempPin = tempPin;
-    _ecPin = ecPin;
-    _DS18D20Pin = DS18D20Pin;
-    printInterval = 700;
+    this->_phPin = phPin;
+    this->_tempPin = tempPin;
+    this->_ecPin = ecPin;
+    this->_DS18D20Pin = DS18D20Pin;
+    this->printInterval = 700;
 
-    ec = EC::EC(_ecPin, _DS18D20Pin);
-    temp = Temp::Temp(_tempPin);
-    ph = PH::PH(_phPin);
+    this->ec = EC(_ecPin, _DS18D20Pin);
+    this->temp = Temp(_tempPin);
+    this->ph = PH(_phPin);
 }
 
 void PTELib::setup(int serial_port)

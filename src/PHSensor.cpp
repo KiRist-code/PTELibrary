@@ -1,33 +1,40 @@
-#include"PHSensor.h"
-#include"Arduino.h"
+#include "PHSensor.h"
+#include "Arduino.h"
 
-PH::PH(uint8_t pin) {
-    _pin = pin;
-    calibration = (6.42 - (-14.50));
+PH::PH(uint8_t pin)
+{
+    this->_pin = pin;
+    this->calibration = (6.42 - (-14.50));
 }
 
-void PH::begin(){
-    
+void PH::begin()
+{
 }
 
-void PH::PH_read(){
+void PH::PH_read()
+{
     averageAnalogRead();
 
     pHVol = ((float)avgValue * 5.0 / 1024 / 6) - 0.08;
     pHValue = -5.70 * pHVol + calibration;
 
-    //displayLCD();
+    // displayLCD();
 }
 
-void PH::averageAnalogRead(){
-    for(int i=0;i<9;i++){
+void PH::averageAnalogRead()
+{
+    for (int i = 0; i < 9; i++)
+    {
         buf[i] = analogRead(_pin);
         delay(30);
     }
 
-    for(int i=0;i<9;i++){
-        for(int j=i+1;j<10;j++){
-            if(buf[i]>buf[j]){
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = i + 1; j < 10; j++)
+        {
+            if (buf[i] > buf[j])
+            {
                 temp = buf[i];
                 buf[i] = buf[j];
                 buf[j] = temp;
@@ -37,15 +44,18 @@ void PH::averageAnalogRead(){
 
     avgValue = 0;
 
-    for(int i=2;i<8;i++){
+    for (int i = 2; i < 8; i++)
+    {
         avgValue += buf[i];
     }
 }
 
-float PH::getPHValue(){
+float PH::getPHValue()
+{
     return pHValue;
 }
 
-float PH::getPHVol(){
+float PH::getPHVol()
+{
     return pHVol;
 }

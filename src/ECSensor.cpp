@@ -2,22 +2,22 @@
 #include"Arduino.h"
 
 EC::EC(uint8_t EC_pin, uint8_t DS18B20_pin){
-    _EC_pin = EC_pin;
-    _DS18D20_pin = DS18B20_pin;
-    AnalogSampleInterval = 25;
-    AnalogValueTotal = 0;
-    AnalogAverage = 0;
-    averageVoltage = 0;
-    index = 0;
-    tempSampleInterval = 850;
+    this->_EC_pin = EC_pin;
+    this->_DS18D20_pin = DS18B20_pin;
+    this->AnalogSampleInterval = 25;
+    this->AnalogValueTotal = 0;
+    this->AnalogAverage = 0;
+    this->averageVoltage = 0;
+    this->index = 0;
+    this->tempSampleInterval = 850;
 
     byte inputCustomChar[] = {B11000,B11000,B00111,B01000,B01000,B01000,B00111,B00000};
 
     for(int i=0;i<8;i++){
-        customChar[i] = inputCustomChar[i];
+        this->customChar[i] = inputCustomChar[i];
     }
 
-    ds = OneWire(_DS18D20_pin);
+    this->ds = OneWire(_DS18D20_pin);
 }
 
 void EC::begin() {

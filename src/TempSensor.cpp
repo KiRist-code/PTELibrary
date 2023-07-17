@@ -2,9 +2,9 @@
 #include"Arduino.h"
 
 Temp::Temp(uint8_t pin) {
-    _pin = pin;
-    ow = OneWire(_pin);
-    t_Sensor = DallasTemperature(&ow);
+    this->_pin = pin;
+    this->ow = OneWire(_pin);
+    this->t_Sensor = DallasTemperature(&ow);
 }
 
 void Temp::begin(){
