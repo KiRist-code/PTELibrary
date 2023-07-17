@@ -4,7 +4,7 @@
 void PH::begin(uint8_t pin)
 {
     this->_pin = pin;
-    this->calibration = (6.42 - (-14.50));
+    this->calibration = (7.0 - (-14.50));
 }
 
 void PH::PH_read()
