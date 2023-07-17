@@ -1,20 +1,21 @@
-#include"Arduino.h"
-#include"PTELib.h"
+#include "Arduino.h"
+#include "PTELib.h"
 
-
-PTELib::PTELib(uint8_t phPin, uint8_t tempPin, uint8_t ecPin, uint8_t DS18D20Pin){
+PTELib::PTELib(uint8_t phPin, uint8_t tempPin, uint8_t ecPin, uint8_t DS18D20Pin)
+{
     _phPin = phPin;
     _tempPin = tempPin;
     _ecPin = ecPin;
     _DS18D20Pin = DS18D20Pin;
     printInterval = 700;
 
-    ec = EC(_ecPin, _DS18D20Pin);
-    temp = Temp(_tempPin);
-    ph = PH(_phPin);
+    ec = EC::EC(_ecPin, _DS18D20Pin);
+    temp = Temp::Temp(_tempPin);
+    ph = PH::PH(_phPin);
 }
 
-void PTELib::setup(int serial_port){
+void PTELib::setup(int serial_port)
+{
     ec.begin();
     printTime = ec.getPrintTime();
     temp.begin();
@@ -22,20 +23,22 @@ void PTELib::setup(int serial_port){
     Serial.begin(serial_port);
 }
 
-void PTELib::sensor_read(){
-    //read EC sensor
+void PTELib::sensor_read()
+{
+    // read EC sensor
     ec.EC_read();
     ec.DS18B20_read();
-    //read temperature sensor
+    // read temperature sensor
     int temperature = temp.temp_read();
-    //read PH sensor
+    // read PH sensor
     ph.PH_read();
 
     /*Serial Display*/
 
-    //EC
+    // EC
     unsigned int analogAverage = ec.getAnalogAverage();
-    if(millis() - printTime >= printInterval){
+    if (millis() - printTime >= printInterval)
+    {
         ec.setPrintTime();
         printTime = ec.getPrintTime();
         unsigned int averageVoltage = ec.getAverageVoltage();
@@ -45,23 +48,24 @@ void PTELib::sensor_read(){
         Serial.print("      Voltage: ");
         Serial.print(averageVoltage);
         Serial.print("mv    EC: ");
-        
+
         float currentEC = ec.getECcurrent();
-        switch((int)currentEC){
-            case -1:
-                Serial.print("No Solution");
-                break;
-            case -2:
-                Serial.print("Out of Range");
-                break;
-            default:
-                Serial.print(currentEC, 2);
-                Serial.print("ms/cm");
-                break;
+        switch ((int)currentEC)
+        {
+        case -1:
+            Serial.print("No Solution");
+            break;
+        case -2:
+            Serial.print("Out of Range");
+            break;
+        default:
+            Serial.print(currentEC, 2);
+            Serial.print("ms/cm");
+            break;
         }
     }
 
-    //PH
+    // PH
     float pHValue = ph.getPHValue();
     float pHVol = ph.getPHVol();
     Serial.print("Vol: ");
@@ -69,7 +73,7 @@ void PTELib::sensor_read(){
     Serial.print("ph: ");
     Serial.println(pHVol);
 
-    //temperature
+    // temperature
     Serial.print("Temperature: ");
     Serial.println(temperature);
 }
