@@ -53,14 +53,14 @@ void PTELib::sensor_read()
         switch ((int)currentEC)
         {
         case -1:
-            Serial.print("No Solution");
+            Serial.println("No Solution   ");
             break;
         case -2:
-            Serial.print("Out of Range");
+            Serial.println("Out of Range  ");
             break;
         default:
             Serial.print(currentEC, 2);
-            Serial.print("ms/cm");
+            Serial.println("ms/cm ");
             break;
         }
     }

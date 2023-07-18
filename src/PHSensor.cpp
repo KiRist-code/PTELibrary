@@ -4,7 +4,7 @@
 void PH::begin(uint8_t pin)
 {
     this->_pin = pin;
-    this->calibration = (7.0 - (-14.50));
+    this->calibration = 37.62;
 }
 
 void PH::PH_read()
@@ -12,7 +12,7 @@ void PH::PH_read()
     averageAnalogRead();
 
     pHVol = ((float)avgValue * 5.0 / 1024 / 6) - 0.08;
-    pHValue = -5.70 * pHVol + calibration;
+    pHValue = -9.457 * pHVol + calibration;
 
     // displayLCD();
 }
