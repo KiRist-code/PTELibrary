@@ -3,9 +3,9 @@
 </p>
     <p align="center">
         <a href="https://github.com/KiRist-code/PTELibrary/graphs/contributors" alt="Contributors">
-            <img src="https://img.shields.io/github/contributors/badges/shields" /></a>
+            <img src="https://img.shields.io/github/contributors/KiRist-code/PTELibrary" /></a>
         <a href="https://github.com/KiRist-code/PTELibrary/pulse" alt="Activity">
-            <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
+            <img src="https://img.shields.io/github/commit-activity/t/KiRist-code/PTELibrary" /></a>
     </p>
 </p>
 
