@@ -35,6 +35,18 @@ void PTELib::sensor_read()
 
     /*Serial Display*/
 
+    // PH
+    float pHValue = ph.getPHValue();
+    float pHVol = ph.getPHVol();
+    Serial.print(",");
+    Serial.println(pHValue);
+    // Serial.print(",");
+    // Serial.println(pHVol);
+
+    // temperature
+    Serial.print(",");
+    Serial.println(temperature);
+
     // EC
     unsigned int analogAverage = ec.getAnalogAverage();
     if (millis() - printTime >= printInterval)
@@ -43,14 +55,14 @@ void PTELib::sensor_read()
         printTime = ec.getPrintTime();
         unsigned int averageVoltage = ec.getAverageVoltage();
 
-        Serial.println("CLEARDATA");
-        Serial.println("LABEL, Analog Value, Voltage, EC, PH, Temp");
+        // Serial.println("CLEARDATA");
+        // Serial.println("LABEL, Analog Value, Voltage, EC, PH, Temp");
 
-        Serial.print("DATA,");
-        Serial.print(analogAverage);
-        Serial.print(",");
-        Serial.print(averageVoltage);
-        Serial.print(",");
+        // Serial.print("DATA,");
+        // Serial.print(analogAverage);
+        // Serial.print(",");
+        // Serial.print(averageVoltage);
+        // Serial.print(",");
 
         float currentEC = ec.getECcurrent();
         switch ((int)currentEC)
@@ -66,16 +78,4 @@ void PTELib::sensor_read()
             break;
         }
     }
-
-    // PH
-    float pHValue = ph.getPHValue();
-    float pHVol = ph.getPHVol();
-    Serial.print(",");
-    Serial.println(pHValue);
-    Serial.print(",");
-    Serial.println(pHVol);
-
-    // temperature
-    Serial.print(",");
-    Serial.println(temperature);
 }
