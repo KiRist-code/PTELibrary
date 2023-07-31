@@ -33,7 +33,7 @@ void EC::initSensor()
         readings[thisReading] = 0;
     }
 
-    TempProcess(StartConvert);
+    // TempProcess(StartConvert);
 
     AnalogSampleTime = millis();
     setPrintTime();
@@ -59,67 +59,67 @@ void EC::EC_read()
     }
 }
 
-void EC::DS18B20_read()
-{
-    if (millis() - tempSampleTime >= tempSampleInterval)
-    {
-        tempSampleTime = millis();
-        temperature = TempProcess(ReadTemperature);
-        TempProcess(StartConvert);
-    }
-}
+// void EC::DS18B20_read()
+// {
+//     if (millis() - tempSampleTime >= tempSampleInterval)
+//     {
+//         tempSampleTime = millis();
+//         temperature = TempProcess(ReadTemperature);
+//         TempProcess(StartConvert);
+//     }
+// }
 
-float EC::TempProcess(bool ch)
-{
-    static byte data[12];
-    static byte addr[8];
-    static float TemperatureSum;
+// float EC::TempProcess(bool ch)
+// {
+//     static byte data[12];
+//     static byte addr[8];
+//     static float TemperatureSum;
 
-    if (!ch)
-    {
-        if (!ds.search(addr))
-        {
-            Serial.println("no more sensors on chain, reset search!");
-            ds.reset_search();
-            return 0;
-        }
+//     if (!ch)
+//     {
+//         if (!ds.search(addr))
+//         {
+//             Serial.println("no more sensors on chain, reset search!");
+//             ds.reset_search();
+//             return 0;
+//         }
 
-        if (OneWire::crc8(addr, 7) != addr[7])
-        {
-            Serial.println("CRC is not vaild!");
-            return 0;
-        }
+//         if (OneWire::crc8(addr, 7) != addr[7])
+//         {
+//             Serial.println("CRC is not vaild!");
+//             return 0;
+//         }
 
-        if (addr[0] != 0x10 && addr[0] != 0x28)
-        {
-            Serial.print("Device is not recognized!");
-            return 0;
-        }
+//         if (addr[0] != 0x10 && addr[0] != 0x28)
+//         {
+//             Serial.print("Device is not recognized!");
+//             return 0;
+//         }
 
-        ds.reset();
-        ds.select(addr);
-        ds.write(0x44, 1);
-    }
-    else
-    {
-        byte present = ds.reset();
-        ds.select(addr);
-        ds.write(0xBE);
+//         ds.reset();
+//         ds.select(addr);
+//         ds.write(0x44, 1);
+//     }
+//     else
+//     {
+//         byte present = ds.reset();
+//         ds.select(addr);
+//         ds.write(0xBE);
 
-        for (int i = 0; i < 9; i++)
-        {
-            data[i] = ds.read();
-        }
+//         for (int i = 0; i < 9; i++)
+//         {
+//             data[i] = ds.read();
+//         }
 
-        ds.reset_search();
-        byte MSB = data[1];
-        byte LSB = data[0];
-        float tempRead = ((MSB << 8) | LSB);
+//         ds.reset_search();
+//         byte MSB = data[1];
+//         byte LSB = data[0];
+//         float tempRead = ((MSB << 8) | LSB);
 
-        TemperatureSum = tempRead / 16;
-    }
-    return TemperatureSum;
-}
+//         TemperatureSum = tempRead / 16;
+//     }
+//     return TemperatureSum;
+// }
 
 // getter
 float EC::getDSTemp()
