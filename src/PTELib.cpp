@@ -14,7 +14,7 @@ PTELib::PTELib(uint8_t phPin, uint8_t tempPin, uint8_t ecPin, uint8_t DS18D20Pin
     this->ph = PH(_phPin);
 }
 
-void PTELib::begin(int serial_port)
+void PTELib::begin(int serial_port);
 {
     // ec.begin();
     printTime = ec.getPrintTime();
