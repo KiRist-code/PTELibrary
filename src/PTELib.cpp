@@ -26,8 +26,8 @@ void PTELib::begin(int serial_port);
 void PTELib::sensor_read()
 {
     // read EC sensor
-    ec.EC_read();
-    ec.DS18B20_read();
+    // ec.EC_read();
+    // ec.DS18B20_read();
     // read temperature sensor
     int temperature = temp.temp_read();
     // read PH sensor
@@ -43,27 +43,29 @@ void PTELib::sensor_read()
     // Temp
     Serial.print(",");
     Serial.print(temperature);
+    Serial.print(",");
 
     // EC
-    unsigned int analogAverage = ec.getAnalogAverage();
-    if (millis() - printTime >= printInterval)
-    {
-        ec.setPrintTime();
-        printTime = ec.getPrintTime();
-        unsigned int averageVoltage = ec.getAverageVoltage();
+    // unsigned int analogAverage = ec.getAnalogAverage();
+    // if (millis() - printTime >= printInterval)
+    // {
+    //     ec.setPrintTime();
+    //     printTime = ec.getPrintTime();
+    //     unsigned int averageVoltage = ec.getAverageVoltage();
 
-        float currentEC = ec.getECcurrent();
-        switch ((int)currentEC)
-        {
-        case -1:
-            Serial.println("No Solution");
-            break;
-        case -2:
-            Serial.println("Out of Range");
-            break;
-        default:
-            Serial.println(currentEC, 2);
-            break;
-        }
-    }
+    //     float currentEC = ec.getECcurrent();
+    //     switch ((int)currentEC)
+    //     {
+    //     case -1:
+    //         Serial.println("No Solution");
+    //         break;
+    //     case -2:
+    //         Serial.println("Out of Range");
+    //         break;
+    //     default:
+    //         Serial.println(currentEC, 2);
+    //         break;
+    //     }
+    // }
+    Serial.println("0");
 }
